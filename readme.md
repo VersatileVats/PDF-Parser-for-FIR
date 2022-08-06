@@ -15,7 +15,7 @@ The backend is up and running but in order to intrecat with the project via UI, 
 ## What is this project about?
 
 <p align="center">
-    <img src="img/#1.png" alt="ppf8" width="650">
+    <img src="img/1.png" alt="ppf8" width="650">
 </p>
 
 <p align="center">
