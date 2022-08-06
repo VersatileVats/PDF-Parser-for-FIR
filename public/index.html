@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Arima&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <title>PPF | OCR with AI</title>
+  </head>
+  <body>
+    <div class="container">
+      
+      <!-- hero section -->
+      <div class="hero d-flex flex-column justify-content-center align-items-center">
+        <!-- <div> -->
+          <p id="landing-text">Welcome to PPF</p>
+          <p class="text-center" id="para">PDF Parser For FIR</p>
+          <a href="#main-app"><button class="btn btn-warning">Take me to app</button></a>
+        <!-- </div> -->
+      </div>
+
+      <!-- OCR section -->
+      <div class="text-center mb-5">
+        <img 
+          data-aos="flip-right"
+          data-aos-duration = "1300"
+          src="https://img.icons8.com/nolan/100/o.png"
+        />
+        <img 
+          data-aos="flip-right"
+          data-aos-duration = "1300"
+          src="https://img.icons8.com/nolan/100/c.png"
+        />
+        <img 
+          data-aos="flip-right"
+          data-aos-duration = "1300"
+          src="https://img.icons8.com/nolan/100/r.png"
+        />
+        
+        <div class="row m-3 mt-5">
+        
+          <div class="col-md-4 mb-3" id="card" data-aos="fade-up">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title"><u>Optical</u></h5>
+                <p class="card-text text-justify">
+                  It starts with grabbing content from the uploaded PDF and <u>teserract.js</u> ensures that
+                  the process is almsot accurate with any language.
+                </p>
+              </div>
+            </div>
+          </div>
+        
+          <div class="col-md-4 mb-3" id="card" data-aos="fade-up" data-aos-duration="1300">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title"><u>Character</u></h5>
+                <p class="card-text text-justify">
+                  Now comes the <u>transliteration</u> part which ensures that there is translation
+                  with meaningfulness using Google translate api
+                </p>
+              </div>
+            </div>
+          </div>
+        
+          <div class="col-md-4 mb-3" id="card" data-aos="fade-up" data-aos-duration="1600">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title"><u>Recognition</u></h5>
+                <p class="card-text text-justify">
+                  Getting appropriate answers from the text using <u>tensorflow's qna model</u> and
+                  populating the final object completes this project
+                </p>
+              </div>
+            </div>
+          </div>
+        
+        </div>
+      </div>
+
+      <div class="m-3 mt-5 text-center" id="tools">
+
+        <img src="https://img.icons8.com/nolan/64/t.png"/>
+        <img src="https://img.icons8.com/nolan/64/o.png"/>
+        <img src="https://img.icons8.com/nolan/64/o.png"/>
+        <img src="https://img.icons8.com/nolan/64/l.png"/>
+        <img src="https://img.icons8.com/nolan/64/s.png"/>
+
+        <div class="m-4">
+          <img class="mr-5" id="img1" src="https://img.icons8.com/color/80/000000/tensorflow.png"/>
+          <img class="mr-5" src="https://img.icons8.com/fluency/80/000000/javascript.png"/>
+          <img class="mr-5" src="https://img.icons8.com/fluency/80/000000/node-js.png"/>
+          <img class="mr-5" src="https://img.icons8.com/external-soft-fill-juicy-fish/80/000000/external-artificial-big-data-soft-fill-soft-fill-juicy-fish.png"/>
+        </div>
+      </div>
+      
+      <h3 class="text-center m-4">Cakewalk (Transliteration only for texts)</h3>
+      <div class="input-group" style="width: 30vw; margin: 10px auto">
+        <input id="textToBeTranslated" type="text" class="form-control" placeholder="Text to be translated"
+          aria-label="Username" maxlength="25" aria-describedby="basic-addon1">
+          <button id="startTranslation" class="btn btn-primary">Submit</button>
+      </div>
+      
+      <div class="input-group" style="width: 30vw; margin: 10px auto">
+        <input 
+          id="outputTranslation" 
+          type="text" 
+          class="form-control" 
+          placeholder="Output" 
+          aria-label="Recipient's username"
+          readonly
+          aria-describedby="basic-addon2">
+      </div>
+      
+      <div id="main-app" class="row mt-5" style="height: 450px; margin-bottom: 30px">
+        <div class='col-12 text-center'>
+          <div class="card">
+            <div class="card-header bg-warning">
+              <strong><u>Upload File Content</u></strong>
+              <div class="custom-control custom-checkbox m-auto" style="width: 200px">
+                <input type="checkbox" id="judgementOnly" class="custom-control-input">
+                <label class="custom-control-label" for="judgementOnly">Judgement analysis</label>
+              </div>
+            </div>
+            <div id='uploadFileContentCard' class="card-body p-2 bg-white">
+              <div class='row p-2'>
+                <div class='col-8 m-auto'>
+                  <p class='w-100 text-center'>
+                    <button 
+                      id='uploadPDFBtn' 
+                      type='button' 
+                      class='btn btn-sm btn-outline-primary rounded-0 m-auto' 
+                      style="border: none"
+                    >
+                      <small style="font-size: 1rem">📂</small>
+                      <input id='uploadPDF' type='file' accept='.pdf,.PDF' style="width: 200px" />
+                    </button>
+                    <span id='pageLoadingSignal'>
+                      <span class="spinner-border spinner-border-sm"></span>&nbsp;
+                      <small class='text-muted'>Processing Page <span id='currentPageNo'>?</span><b>&nbsp;/&nbsp;<span
+                            id="totalPages">?</span>&nbsp;</b>
+                      </small>
+                    </span>
+                  </p>
+                  <hr>
+                  <!-- <div id='page-preview' class='small border text-center'></div> -->
+                  <small><strong>Page Text Extraction</strong></small>
+                  <div class="progress">
+                    <div id="ocrPageProgress" class="progress-bar progress-bar-striped progress-bar-animated"></div>
+                  </div>
+                  <small id='ocrPageProgressStatus' class='small'></small>
+                  <div style="height: 40px;">
+                    <small class='text-dark'>Processed Page(s)</small>
+                    <small id='processedPages' class='small'></small>
+                  </div>
+                  <div class="card-body p-0 d-none">
+                    <textarea id='inputText' class="form-control rounded-0 m-0 border-0"></textarea>
+                  </div>
+                  <div id='page-preview' class='small border text-center'></div>
+                  <button id='downloadTextContent' class="btn btn-sm text-primary text-white border border-primary m-1" style="display: none"
+                    type='button'>
+                    <img src="https://img.icons8.com/office/20/000000/download--v1.png" />
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="objectDiv" class="flex-column justify-content-center align-items-center m-auto p-2 font-weight-bold" style="width: 50vw; display: none;">
+        <p style="font-size: 1.5rem">Object:</p>
+        <p class="align-self-start">{</p>
+          <div style="color: green" id="insertObject">
+            <img src="./loader.svg" style="border-radius: 50px;" id="loader" alt="loader">
+          </div>
+        <p class="align-self-end">}</p>
+      </div>
+
+    </div>
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <script src='js/polyfill.js'></script>
+    <script src='js/tesseract/tesseract.min.js'></script>
+    <script src='js/pdf/pdf.min.js'></script>
+    <script src='js/main.js'></script>
+    
+    <script>
+      const text = document.querySelector('#textToBeTranslated');
+      const submit = document.querySelector('#startTranslation');
+      submit.addEventListener('click', () => {
+        fetch('/simple', {
+          method: 'post',
+          headers: { 'Content-type': 'application/json' },
+          body: JSON.stringify({
+            text: text.value
+          })
+        }).then(res => res.json()).then( res =>
+          {document.querySelector('#outputTranslation').setAttribute('value', res);
+        console.log(res);}
+        );
+      });
+    </script>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init({    
+        offset: 120, 
+        delay: 0, 
+        duration: 800, 
+        easing: 'ease'
+      });
+    </script>
+  </body>
+</html>
